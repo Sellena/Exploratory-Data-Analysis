@@ -1,3 +1,22 @@
+##Loading the data
+
+##When loading the dataset into R, the following to be considered:
+
+##The dataset has 2,075,259 rows and 9 columns. First a rough estimate of how much memory the dataset will require in memory before reading into R should be calculated. Computer should have enough memory (most modern computers should be fine).
+
+##We will only be using data from the dates 2007-02-01 and 2007-02-02. One alternative is to read the data from just those dates rather than reading in the entire dataset and subsetting to those dates.
+
+##It may be useful to convert the Date and Time variables to Date/Time classes in R using the strptime() and as.Date() functions.
+
+##In this dataset missing values are coded as ?.
+
+##Making Plots
+
+##Our overall goal here is simply to examine how household energy usage varies over a 2-day period in February, 2007. Our task is to construct the plots using the base plotting system.
+
+****************************************************************************************************************************************
+##plot1
+
 setwd("E:/S/Coursera/DS-JHU/4Eploratory Data Analysis/project 1")
 
 f1 <- file("household_power_consumption.txt")
@@ -5,6 +24,7 @@ f1hist <- read.table(text=grep("^[1,2]/2/2007",readLines(f1),value=TRUE),col.nam
 plot1 <- hist(f1hist$Global_active_power,col="red",main=paste("Global Active Power"),xlab = "Global Active Power(kilowatts)")
 
 ******************************************************************************************************************************************
+##plot2
 
 setwd("E:/S/Coursera/DS-JHU/4Eploratory Data Analysis/project 1")
 
@@ -18,6 +38,7 @@ data$Datetime <- as.POSIXct(datetime)
 plot2 <- plot(data$Datetime,data$Global_active_power, type="l", ylab = "Global Active Power(kilowatts)",xlab="")
 
 ******************************************************************************************************************************************
+##plot3
 
 setwd("E:/S/Coursera/DS-JHU/4Eploratory Data Analysis/project 1")
 
@@ -34,6 +55,7 @@ plot(data$Sub_metering_1,data$Datetime,type="l",ylab = "Global Active Power(kilo
 legend("topright", col = c("black", "red", "blue"),lty = "solid", legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 
 ***************************************************************************************************************************************
+##plot4
 
 setwd("E:/S/Coursera/DS-JHU/4Eploratory Data Analysis/project 1")
 
@@ -55,6 +77,3 @@ with({plot(data$Global_active_power,data$Datetime,type="l",ylab="Global Active P
          legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   plot(data$Global_reactive_power,data$Datetime,type="l",ylab="Global_reactive_power",xlab="datetime")
   })
-
-
-
