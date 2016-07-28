@@ -8,5 +8,5 @@ data <- subset(f2hist,subset=(Date>="2007-02-01")&(Date<="2007-02-02"))
 datetime <- paste(as.Date(data$Date), data$Time)
 data$Datetime <- as.POSIXct(datetime)
 
-#PLOT2
+# PLOT2
 plot2 <- plot(data$Datetime,data$Global_active_power, type="l", ylab = "Global Active Power(kilowatts)",xlab="")
