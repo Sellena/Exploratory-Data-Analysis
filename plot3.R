@@ -1,0 +1,16 @@
+setwd("E:/S/Coursera/DS-JHU/4Eploratory Data Analysis/project 1")
+
+# READING THE DATA FILE
+f2hist <- read.csv("household_power_consumption.txt",header=TRUE,sep=";")
+f2hist$Date <- as.Date(f2hist$Date,format="%d/%m/%Y")
+data <- subset(f2hist,subset=(Date>="2007-02-01")&(Date<="2007-02-02"))
+
+datetime <- paste(as.Date(data$Date), data$Time)
+data$Datetime <- as.POSIXct(datetime)
+
+# PLOT3
+plot(data$Sub_metering_1,data$Datetime,type="l",ylab = "Global Active Power(kilowatts)", xlab="")
+    lines(data$Sub_metering_2,data$Datetime,col='red')
+    lines(data$Sub_metering_3,data$Datetime,col='blue')
+legend("topright", col = c("black", "red", "blue"),lty = "solid", legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
